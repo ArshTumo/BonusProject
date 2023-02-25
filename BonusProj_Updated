@@ -1,0 +1,33 @@
+import time
+try:
+    inp = input("Insert time to count down (h:m:s)")
+    
+    hms_split = inp.split(":")
+    hours = int(hms_split[0])
+    minutes = int(hms_split[1])
+    seconds = int(hms_split[2])
+    
+    all_seconds = hours * 3600 + minutes * 60 + seconds
+    
+    def start_countdown():
+        if (hours < 24) and (minutes < 60) and (seconds < 60):
+            if (len(inp) < 9) and (len(inp) > 4):
+                for i in range(all_seconds, 0, -1):
+                    s = i % 60
+                    m = int(i / 60) % 60
+                    h = int(i / 3600) % 24
+                    print(f"{h:02}:{m:02}:{s:02}")
+                    time.sleep(1)
+            else:
+                print("Don't type too many zeroes!")
+        elif minutes > 59:
+            print("Minutes can't be more than 59!")
+        elif seconds > 59:
+            print("Seconds can't be more than 59!")
+        else:
+            print("We don't count more than a day")
+        
+    start_countdown()
+except:
+    print("That's not a correct input. Try again!")
+
